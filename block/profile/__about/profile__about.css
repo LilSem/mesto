@@ -1,4 +1,5 @@
-.profile__profession {
+.profile__about {
+    max-width: 189px;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -6,10 +7,14 @@
     color: #ffffff;
     padding: 14px 0 0;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media screen and (min-width: 768px){
-    .profile__profession {
+    .profile__about {
+        max-width: 294px;
         text-align: start;
         font-size: 18px;
         line-height: 22px;

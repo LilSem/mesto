@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Mesto</title>
+    <title>Mesto Russia</title>
     <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="root">
@@ -18,10 +18,10 @@
         <img src="images/profile/avatar.jpg" alt="Аватар" class="profile__avatar">
         <div class="profile__wrapper">
             <div class="profile__inner">
-                <p class="profile__name">Жак-Ив Кусто</p>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button class="profile__btn-edit" type="button"></button>
             </div>
-            <p class="profile__profession">Исследователь океана</p>
+            <p class="profile__about">Исследователь океана</p>
         </div>
         <button class="profile__btn-add" type="button"></button>
     </section>
@@ -45,12 +45,12 @@
             </div>
         </article>
         <article class="cards__item">
-            <img src="images/cards/item-3.jpg" alt="Домбай" class="cards__image">
+            <img src="images/cards/crimea.jpg" alt="Ласточкино гнездо" class="cards__image">
             <div class="cards__description">
                 <h2 class="cards__place">
-                    Домбай
+                    Достопримечательность ласточкино гнездо
                 </h2>
-                <button class="cards__btn-like" type="button"></button>
+                <button class="cards__btn-like cards__btn-like_active" type="button"></button>
             </div>
         </article>
         <article class="cards__item">
@@ -85,5 +85,17 @@
 <footer class="footer">
     <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
 </footer>
+<div class="popup">
+    <form class="popup__container">
+        <button class="popup__btn-close" type="button"></button>
+        <div class="popup__wrapper">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input class="popup__input popup__input_name" type="text" placeholder="Имя" required>
+            <input class="popup__input popup__input_about" type="text" placeholder="О себе" required>
+            <button class="popup__btn-submit" type="submit">Сохранить</button>
+        </div>
+    </form>
+</div>
+<script src="js/script.js"></script>
 </body>
 </html>
