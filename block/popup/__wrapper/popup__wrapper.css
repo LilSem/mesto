@@ -6,9 +6,10 @@
     background-color: #ffffff;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    align-self: center;
+    margin: 0 auto;
     padding: 25px 0;
-    transition: width 1s ease;
+    transition: width .7s ease,
+    padding .5s ease;
 }
 
 @media screen and (min-width: 581px) {
