@@ -1,4 +1,4 @@
-.popup__wrapper {
+.form__wrapper {
     width: 282px;
     display: flex;
     flex-direction: column;
@@ -13,7 +13,7 @@
 }
 
 @media screen and (min-width: 581px) {
-    .popup__wrapper {
+    .form__wrapper {
         align-self: center;
         width: 430px;
         padding: 34px 0 37px;
