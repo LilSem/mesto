@@ -18,9 +18,9 @@ function renderCard(cardName, cardLink) {
     likeBtn.addEventListener('click', event => event.target.classList.toggle('cards__btn-like_active'));
     removeBtn.addEventListener('click', event => event.target.closest('.cards__item').remove());
     image.addEventListener('click', (event) => {
-        imagePreview.src = image.src;
-        descriptionPreview.textContent = placeTitle.textContent;
-        showPopup(event.target, popupPreview);
+        imageFigure.src = image.src;
+        descriptionFigure.textContent = placeTitle.textContent;
+        showPopup(event.target, previewPopup);
     });
 
     cardContainer.prepend(card);
@@ -48,22 +48,22 @@ function closePopup(element) {
 }
 
 
-editBtn.addEventListener('click', (event) => showPopup(event.target, popupProfile));
-addBtn.addEventListener('click', (event) => showPopup(event.target, popupAddCard));
+editBtn.addEventListener('click', (event) => showPopup(event.target, profilePopup));
+addBtn.addEventListener('click', (event) => showPopup(event.target, cardPopup));
 
-profilePopupForm.addEventListener('submit', (event) => {
+profileForm.addEventListener('submit', (event) => {
     event.preventDefault();
     nameField.textContent = nameInput.value;
     aboutField.textContent = aboutInput.value;
-    closePopup(profilePopupForm);
-    profilePopupForm.reset();
+    closePopup(profileForm);
+    profileForm.reset();
 });
 
-addCardPopupForm.addEventListener('submit',(event) => {
+cardForm.addEventListener('submit',(event) => {
     event.preventDefault();
     renderCard(titleInput.value, sourceInput.value);
-    closePopup(popupAddCard);
-    addCardPopupForm.reset();
+    closePopup(cardPopup);
+    cardForm.reset();
 });
 
 closeBtn.forEach((button) => {

@@ -42,15 +42,15 @@ const aboutInput = document.querySelector('.form__input_type_about');
 const titleInput = document.querySelector('.form__input_type_title');
 const sourceInput = document.querySelector('.form__input_type_image-url');
 
-// Popup preview
-const imagePreview = document.querySelector('.figure__preview');
-const descriptionPreview = document.querySelector('.figure__description');
+// Figure
+const imageFigure = document.querySelector('.figure__preview');
+const descriptionFigure = document.querySelector('.figure__description');
 
 // Popup names
-const popupProfile = document.querySelector('.popup_profile');
-const popupAddCard = document.querySelector('.popup_card');
-const popupPreview = document.querySelector('.popup_preview');
+const profilePopup = document.querySelector('.popup_profile');
+const cardPopup = document.querySelector('.popup_card');
+const previewPopup = document.querySelector('.popup_preview');
 
 // Form
-const profilePopupForm = document.querySelector('.form_profile');
-const addCardPopupForm = document.querySelector('.form_card');
+const profileForm = document.querySelector('.form_profile');
+const cardForm = document.querySelector('.form_card');
