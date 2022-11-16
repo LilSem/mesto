@@ -1,9 +1,8 @@
 'use strict'
 
-window.addEventListener('DOMContentLoaded', () => initialCards.forEach(item => renderCard(item.name, item.link)));
+initialCards.forEach(item => renderCard(createCard(item.name, item.link)));
 
-function renderCard(cardName, cardLink) {
-    const cardContainer = document.querySelector('.cards');
+function createCard(cardName, cardLink) {
     const cardTemplate = document.querySelector('#card').content;
     const card = cardTemplate.querySelector('.cards__item').cloneNode(true);
     const image = card.querySelector('.cards__image');
@@ -19,54 +18,50 @@ function renderCard(cardName, cardLink) {
     removeBtn.addEventListener('click', event => event.target.closest('.cards__item').remove());
     image.addEventListener('click', (event) => {
         imageFigure.src = image.src;
+        imageFigure.alt = placeTitle.textContent;
         descriptionFigure.textContent = placeTitle.textContent;
-        showPopup(event.target, previewPopup);
+        showPopup(previewPopup);
     });
+    return card;
+}
 
+function renderCard(card) {
     cardContainer.prepend(card);
 }
 
-function showPopup(buttonName, popupName) {
-    switch (buttonName.className) {
-        case editBtn.className:
-            fillProfile();
-            popupName.classList.add('popup_opened');
-            break;
-        default:
-            popupName.classList.add('popup_opened');
-            break;
-    }
+function showPopup(popupName) {
+    popupName.classList.add('popup_opened');
 }
 
-function fillProfile() {
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+}
+
+
+editBtn.addEventListener('click', (event) => {
     nameInput.value = nameField.textContent;
     aboutInput.value = aboutField.textContent;
-}
+    showPopup(profilePopup);
+});
 
-function closePopup(element) {
-    element.closest('.popup').classList.remove('popup_opened');
-}
-
-
-editBtn.addEventListener('click', (event) => showPopup(event.target, profilePopup));
-addBtn.addEventListener('click', (event) => showPopup(event.target, cardPopup));
+addBtn.addEventListener('click', (event) => showPopup(cardPopup));
 
 profileForm.addEventListener('submit', (event) => {
     event.preventDefault();
     nameField.textContent = nameInput.value;
     aboutField.textContent = aboutInput.value;
-    closePopup(profileForm);
+    closePopup(profilePopup);
     profileForm.reset();
 });
 
-cardForm.addEventListener('submit',(event) => {
+cardForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    renderCard(titleInput.value, sourceInput.value);
+    renderCard(createCard(titleInput.value, sourceInput.value))
     closePopup(cardPopup);
     cardForm.reset();
 });
 
-closeBtn.forEach((button) => {
-    button.addEventListener('click', (event) => closePopup(event.target))
+closeBtns.forEach((button) => {
+    const activePopup = button.closest('.popup');
+    button.addEventListener('click', (event) => closePopup(activePopup));
 });
-

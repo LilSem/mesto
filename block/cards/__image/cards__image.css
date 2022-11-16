@@ -4,4 +4,9 @@
     aspect-ratio: 1 / 1;
     border-radius: 10px 10px 0 0;
     transition: opacity .7s ease;
+    background-color: #000000;
+}
+
+.cards__image:hover {
+    cursor: pointer;
 }
