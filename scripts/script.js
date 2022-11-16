@@ -16,7 +16,7 @@ function createCard(cardName, cardLink) {
 
     likeBtn.addEventListener('click', event => event.target.classList.toggle('cards__btn-like_active'));
     removeBtn.addEventListener('click', event => event.target.closest('.cards__item').remove());
-    image.addEventListener('click', (event) => {
+    image.addEventListener('click', () => {
         imageFigure.src = image.src;
         imageFigure.alt = placeTitle.textContent;
         descriptionFigure.textContent = placeTitle.textContent;
@@ -38,13 +38,13 @@ function closePopup(popup) {
 }
 
 
-editBtn.addEventListener('click', (event) => {
+editBtn.addEventListener('click', () => {
     nameInput.value = nameField.textContent;
     aboutInput.value = aboutField.textContent;
     showPopup(profilePopup);
 });
 
-addBtn.addEventListener('click', (event) => showPopup(cardPopup));
+addBtn.addEventListener('click', () => showPopup(cardPopup));
 
 profileForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -63,5 +63,5 @@ cardForm.addEventListener('submit', (event) => {
 
 closeBtns.forEach((button) => {
     const activePopup = button.closest('.popup');
-    button.addEventListener('click', (event) => closePopup(activePopup));
+    button.addEventListener('click', () => closePopup(activePopup));
 });
