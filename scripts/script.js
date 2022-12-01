@@ -29,14 +29,40 @@ function renderCard(card) {
     cardContainer.prepend(card);
 }
 
-function showPopup(popupName) {
-    popupName.classList.add('popup_opened');
+const showPopup = (popup) => {
+    setPopupListeners(popup);
+    // enableValidation(configValidation);
+    popup.classList.add('popup_opened');
 }
 
-function closePopup(popup) {
+const closePopup = (popup) => {
+    removePopupListeners(popup);
     popup.classList.remove('popup_opened');
 }
 
+const pressedEscape = (event, popup) => {
+    if (event.key === 'Escape') {
+        closePopup(popup);
+    }
+}
+
+const pressedOverlay = (event, popup) => {
+    if (event.target.classList.contains('popup')) {
+        closePopup(popup);
+    }
+}
+
+const setPopupListeners = (popup) => {
+    popup.querySelector('.popup__btn-close').addEventListener('click', () => closePopup(popup));
+    popup.addEventListener('mousedown', (event) => pressedOverlay(event, popup));
+    document.addEventListener('keydown', (event) => pressedEscape(event, popup));
+}
+
+const removePopupListeners = (popup) => {
+    popup.querySelector('.popup__btn-close').removeEventListener('click', () => closePopup(popup));
+    popup.removeEventListener('mousedown', (event) => pressedOverlay(event, popup));
+    document.removeEventListener('keydown', (event) => pressedEscape(event, popup));
+}
 
 editBtn.addEventListener('click', () => {
     nameInput.value = nameField.textContent;
@@ -59,9 +85,4 @@ cardForm.addEventListener('submit', (event) => {
     renderCard(createCard(titleInput.value, sourceInput.value))
     closePopup(cardPopup);
     cardForm.reset();
-});
-
-closeBtns.forEach((button) => {
-    const activePopup = button.closest('.popup');
-    button.addEventListener('click', () => closePopup(activePopup));
 });

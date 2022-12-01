@@ -7,12 +7,7 @@
     color: #000000;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
     transition: width 1s ease;
-}
-
-.form__input:last-of-type {
-    margin-bottom: 0;
 }
 
 @media screen and (min-width: 581px) {
