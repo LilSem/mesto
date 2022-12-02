@@ -31,37 +31,41 @@ function renderCard(card) {
 
 const showPopup = (popup) => {
     setPopupListeners(popup);
-    // enableValidation(configValidation);
     popup.classList.add('popup_opened');
 }
 
-const closePopup = (popup) => {
-    removePopupListeners(popup);
-    popup.classList.remove('popup_opened');
+const closePopup = () => {
+    const activePopup = document.querySelector('.popup_opened');
+    removePopupListeners(activePopup);
+    activePopup.classList.remove('popup_opened');
 }
 
-const pressedEscape = (event, popup) => {
+const pressedEscape = (event) => {
     if (event.key === 'Escape') {
-        closePopup(popup);
+        closePopup();
     }
 }
 
-const pressedOverlay = (event, popup) => {
+const pressedOverlay = (event) => {
     if (event.target.classList.contains('popup')) {
-        closePopup(popup);
+        closePopup();
     }
+}
+
+const disabledSubmitBtn = (popup) =>{
+    popup.querySelector('.form__submit-btn').setAttribute('disabled', true);
 }
 
 const setPopupListeners = (popup) => {
-    popup.querySelector('.popup__btn-close').addEventListener('click', () => closePopup(popup));
-    popup.addEventListener('mousedown', (event) => pressedOverlay(event, popup));
-    document.addEventListener('keydown', (event) => pressedEscape(event, popup));
+    popup.querySelector('.popup__btn-close').addEventListener('click', closePopup);
+    popup.addEventListener('mousedown', pressedOverlay);
+    document.addEventListener('keydown', pressedEscape);
 }
 
 const removePopupListeners = (popup) => {
-    popup.querySelector('.popup__btn-close').removeEventListener('click', () => closePopup(popup));
-    popup.removeEventListener('mousedown', (event) => pressedOverlay(event, popup));
-    document.removeEventListener('keydown', (event) => pressedEscape(event, popup));
+    popup.querySelector('.popup__btn-close').removeEventListener('click',  closePopup);
+    popup.removeEventListener('mousedown', pressedOverlay);
+    document.removeEventListener('keydown', pressedEscape);
 }
 
 editBtn.addEventListener('click', () => {
@@ -77,12 +81,14 @@ profileForm.addEventListener('submit', (event) => {
     nameField.textContent = nameInput.value;
     aboutField.textContent = aboutInput.value;
     closePopup(profilePopup);
+    disabledSubmitBtn(profilePopup);
     profileForm.reset();
 });
 
 cardForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    renderCard(createCard(titleInput.value, sourceInput.value))
+    renderCard(createCard(titleInput.value, sourceInput.value));
     closePopup(cardPopup);
+    disabledSubmitBtn(cardPopup);
     cardForm.reset();
 });
