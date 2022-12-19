@@ -46,7 +46,11 @@ const pageElements = {
     previewPopup: document.querySelector('.popup_preview'),
     profileForm: document.querySelector('.form_profile'),
     cardForm: document.querySelector('.form_card'),
-    cardContainer: document.querySelector('.cards')
+    cardContainer: document.querySelector('.cards'),
+    closeBtn: document.querySelectorAll('.popup__btn-close'),
+    popupList: document.querySelectorAll('.popup'),
+    imagePopup: document.querySelector('.figure__preview'),
+    imageCaptionPopup: document.querySelector('.figure__description')
 };
 
 export {initialCards, configValidation, pageElements}
