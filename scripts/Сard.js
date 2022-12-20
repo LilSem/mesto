@@ -7,9 +7,10 @@ class Card {
         this._element = this._getElement();
         this._handleOpenPopup = handleOpenPopup;
 
-        this.likeBtn = this._element.querySelector('.cards__btn-like');
-        this.removeBtn = this._element.querySelector('.cards__btn-remove');
-        this.imageCard = this._element.querySelector('.cards__image');
+        this._likeBtn = this._element.querySelector('.cards__btn-like');
+        this._removeBtn = this._element.querySelector('.cards__btn-remove');
+        this._image = this._element.querySelector('.cards__image');
+        this._placeTitle = this._element.querySelector('.cards__place');
     }
 
     _getElement() {
@@ -23,9 +24,6 @@ class Card {
     createCard() {
         this._setEventListeners();
 
-        this._image = this._element.querySelector('.cards__image');
-        this._placeTitle = this._element.querySelector('.cards__place');
-
         this._image.src = this._link;
         this._image.alt = this._name;
         this._placeTitle.textContent = this._name;
@@ -34,13 +32,13 @@ class Card {
     }
 
     _setEventListeners() {
-        this.likeBtn.addEventListener('click', () => this._toggleLikeButtonState());
-        this.removeBtn.addEventListener('click', () => this._removeCard());
-        this.imageCard.addEventListener('click', () => this._setImagePreview());
+        this._likeBtn.addEventListener('click', () => this._toggleLikeButtonState());
+        this._removeBtn.addEventListener('click', () => this._removeCard());
+        this._image.addEventListener('click', () => this._setImagePreview());
     }
 
     _toggleLikeButtonState() {
-        this.likeBtn.classList.toggle('cards__btn-like_active')
+        this._likeBtn.classList.toggle('cards__btn-like_active')
     }
 
     _removeCard() {
