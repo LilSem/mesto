@@ -33,24 +33,19 @@ const configValidation = {
 };
 
 const pageElements = {
-    nameField: document.querySelector('.profile__name'),
-    aboutField: document.querySelector('.profile__about'),
+    nameFieldSelector: '.profile__name',
+    aboutFieldSelector: '.profile__about',
     editBtn: document.querySelector('.profile__btn-edit'),
     addBtn: document.querySelector('.profile__btn-add'),
     nameInput: document.querySelector('.form__input_type_name'),
     aboutInput: document.querySelector('.form__input_type_about'),
-    titleInput: document.querySelector('.form__input_type_title'),
-    sourceInput: document.querySelector('.form__input_type_image-url'),
-    profilePopup: document.querySelector('.popup_profile'),
-    cardPopup: document.querySelector('.popup_card'),
-    previewPopup: document.querySelector('.popup_preview'),
+    popupProfileSelector: '.popup_profile',
+    popupCardSelector:'.popup_card',
+    popupPreviewSelector: '.popup_preview',
+    templateCardSelector: '#card',
     profileForm: document.querySelector('.form_profile'),
     cardForm: document.querySelector('.form_card'),
-    cardContainer: document.querySelector('.cards'),
-    closeBtnList: document.querySelectorAll('.popup__btn-close'),
-    popupList: document.querySelectorAll('.popup'),
-    imagePopup: document.querySelector('.figure__preview'),
-    imageCaptionPopup: document.querySelector('.figure__description')
+    cardContainer:'.cards'
 };
 
 export {initialCards, configValidation, pageElements}

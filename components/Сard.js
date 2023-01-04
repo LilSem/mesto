@@ -1,8 +1,8 @@
-class Card {
+export default class Card {
 
-    constructor(item, selector, handleOpenPopup) {
-        this._name = item.name;
-        this._link = item.link;
+    constructor({name, link}, selector, handleOpenPopup) {
+        this._name = name;
+        this._link = link;
         this._selector = selector;
         this._element = this._getElement();
         this._handleOpenPopup = handleOpenPopup;
@@ -50,5 +50,3 @@ class Card {
         this._handleOpenPopup(this._name, this._link);
     }
 }
-
-export default Card;

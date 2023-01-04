@@ -5,17 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Mesto Russia</title>
-    <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="root">
 <header class="header">
     <a href="#">
-        <img src="images/header/logo-white.svg" alt="Логотип сайта" class="header__logo">
+        <img src="<%=require('./images/header/logo-white.svg')%>" alt="Логотип сайта" class="header__logo">
     </a>
 </header>
 <main>
     <section class="profile">
-        <img src="images/profile/avatar.jpg" alt="Аватар" class="profile__avatar">
+        <img src="<%=require('./images/profile/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
         <div class="profile__wrapper">
             <div class="profile__inner">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -77,7 +76,7 @@
                        class="form__input form__input_type_image-url"
                        type="url"
                        placeholder="Ссылка на картинку"
-                       name="image-url"
+                       name="url"
                        required>
                 <span class="url-input-error form__input-error"></span>
                 <button class="form__submit-btn" type="submit">Создать</button>
@@ -89,7 +88,7 @@
     <div class="popup__container">
         <button class="popup__btn-close" type="button" aria-label="Close"></button>
         <figure class="figure">
-            <img src="images/preview/no-image.svg" alt="Просмотр фотографии" class="figure__preview">
+            <img src="<%=require('./images/preview/no-image.svg')%>" alt="Просмотр фотографии" class="figure__preview">
             <figcaption class="figure__description">Изображение отсутствует</figcaption>
         </figure>
     </div>
@@ -104,6 +103,6 @@
         </div>
     </article>
 </template>
-<script type="module" src="scripts/index.js"></script>
+<script type="module" src="pages/index.js"></script>
 </body>
 </html>
