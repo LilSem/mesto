@@ -26,40 +26,43 @@ const {
     cardContainer
 } = pageElements;
 
-
-const validationProfileForm = new FormValidator(configValidation, profileForm);
-validationProfileForm.enableValidation();
-
-const validationCardForm = new FormValidator(configValidation, cardForm);
-validationCardForm.enableValidation();
-
-const userInfo = new UserInfo(nameFieldSelector, aboutFieldSelector);
-
 const popupProfile = new PopupWithForm(
     {
         selector: popupProfileSelector,
         handleSubmitForm: (formValues) => {
             userInfo.setUserInfo(formValues);
 
-            popupCard.close();
+            popupProfile.close();
         }
     });
+
 
 const popupCard = new PopupWithForm(
     {
         selector: popupCardSelector,
         handleSubmitForm: (formValues) => {
             cardSection.addItem(createCard({name: formValues.title, link: formValues.url}));
+
             popupCard.close();
         }
     });
 
 const popupCardPreview = new PopupWithImage(popupPreviewSelector);
 
+const userInfo = new UserInfo(nameFieldSelector, aboutFieldSelector);
+
+const validationProfileForm = new FormValidator(configValidation, profileForm);
+const validationCardForm = new FormValidator(configValidation, cardForm);
+
+popupProfile.setEventListeners();
+popupCard.setEventListeners();
+popupCardPreview.setEventListeners();
+
+validationProfileForm.enableValidation();
+validationCardForm.enableValidation();
 
 const handleCardClick = (name, link) => {
     popupCardPreview.open(name, link);
-    popupCardPreview.setEventListeners();
 }
 
 const createCard = (item) => {
@@ -82,19 +85,13 @@ editBtn.addEventListener('click', () => {
     aboutInput.value = userData.about;
 
     validationProfileForm.resetValidation();
-
-  /* Делаю кнопку не активной, для того чтобы при повторном открытии формы с профилем
-     пользователь не мог отправить форму, пока не изменит в ней данные.
-     Так мы избежим в будущем лишних операций с отправкой данных на сервер */
     validationProfileForm.disabledButtonSubmit();
 
     popupProfile.open();
-    popupProfile.setEventListeners();
 });
 
 addBtn.addEventListener('click', () => {
     validationCardForm.resetValidation();
 
     popupCard.open();
-    popupCard.setEventListeners();
 });
